@@ -10,11 +10,11 @@
     name: "{{ kibana_package }}"
     state: "{{ kibana_package_state }}"
 
-- name: Ensure Kibana is started and enabled at boot.
+- name: Ensure Kibana is enabled at boot.
   service:
     name: kibana
-    state: "{{ kibana_service_state }}"
     enabled: "{{ kibana_service_enabled }}"
+  notify: restart kibana
 
 - name: Copy Kibana configuration.
   template:
